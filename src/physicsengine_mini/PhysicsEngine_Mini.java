@@ -49,7 +49,7 @@ public class PhysicsEngine_Mini {
         while(true){
             {
             try{
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(500);
             }
             catch(InterruptedException e)
             {
@@ -108,11 +108,17 @@ public class PhysicsEngine_Mini {
         {
             System.out.println(Table[tabnum]);
         }
-        if(CordinatesY > ylength || CordinatesX > xlength)
+        if(CordinatesY+6 > ylength)
         {
-            System.err.println("Object Out!");
-            break;
-            
+           
+           object.collusion = true;  
+           //System.out.println(object.collusion);
+        }
+        
+        else
+        {
+
+            object.collusion = false;
         }
         }
     }

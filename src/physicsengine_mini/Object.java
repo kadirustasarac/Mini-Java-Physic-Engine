@@ -4,14 +4,17 @@
  */
 package physicsengine_mini;
 
+import static java.lang.Math.abs;
+
 /**
  *
  * @author Abdulkadir
  */
 public class Object {
-    static public final int gravity = 1;
+    static public final int gravity = 1,limit = 2;
     public int velocityX = 0,velocityY =0,cordinatesX = 1,cordinatesY = 1;
-    Object(int velocityX,int veloxityY,int cordinatesX,int cordinatesY)
+    public boolean collusion = false;
+    Object(int velocityX,int velocityY,int cordinatesX,int cordinatesY)
     {
         this.velocityX = velocityX;
         this.velocityY = velocityY;
@@ -21,9 +24,15 @@ public class Object {
     void setLoc()
     {
         this.cordinatesX += velocityX;
+        if(collusion)
+        {
+            velocityY += -1*(abs(velocityY+1));
+        }
         this.cordinatesY += velocityY;
         //if(velocityX >= gravity){
+        if(velocityY <= limit){
           this.velocityY += gravity;
+        }
         //}     
     }
 }
