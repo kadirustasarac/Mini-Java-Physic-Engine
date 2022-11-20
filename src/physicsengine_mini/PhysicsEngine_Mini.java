@@ -4,6 +4,8 @@
  */
 package physicsengine_mini;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.TimeUnit;
 /**
  *
  * @author Abdulkadir
@@ -25,19 +27,37 @@ public class PhysicsEngine_Mini {
         int xlength = inpUser.nextInt();
         System.out.println("Enter Y heigth");
         int ylength = inpUser.nextInt();
-        graphMaker(xlength, ylength);
+        System.out.println("Enter Obj Location as a X");
+        int objx = inpUser.nextInt();
+        System.out.println("Enter Obj Location as a y");
+        int objy = inpUser.nextInt();
+        System.out.println("Enter Obj Y velocity");
+        int vely = inpUser.nextInt();
+        System.out.println("Enter Obj X Velocity");
+        int velx = inpUser.nextInt();
+        Object obj= new Object(velx,vely,objx,objy);
+        graphMaker(xlength, ylength,obj);
         
     }
-    public static void graphMaker(int xlength,int ylength)
+    public static void graphMaker(int xlength,int ylength,Object object)
     {
-        int[][] cordinates = new int[ylength][xlength];
-        cordinates[0][0] = 2;
-        System.err.println(cordinates[0][1]);
-        System.err.println(cordinates[0].length);
+       
         String Table[] = new String[ylength*2+1];
         //                         0       1      2          3         4
         String[] tableConstr = {"-----",  "|"  ,  ""  ,  "     "  ,   " "  };
         String obj = "  O  ";
+        while(true){
+            {
+            try{
+            TimeUnit.SECONDS.sleep(2);
+            }
+            catch(InterruptedException e)
+            {
+                System.err.println("An Error happened");
+            }
+            }
+        int CordinatesY = object.cordinatesY,CordinatesX = object.cordinatesX;
+        object.setLoc();
         for(int l = 0;l<Table.length;l++)
         {
             Table[l] = "";
@@ -71,20 +91,14 @@ public class PhysicsEngine_Mini {
                     }
                     else
                     {
-                       /* for(int h =0 ; h < cordinates.length;h++)
+                        if(((CordinatesY*2-1) == y) && ((CordinatesX*2-1) == x))
                         {
-                            
-                            for(int b = 0;b < cordinates[h].length;b++)
-                            {
-                                if(cordinates[h][b] == 2)
-                                {
-                                    System.out.println(cordinates[h][b]);
-                                    Table[y] += obj;
-                                }
-                                
-                            }
-                        }*/
+                         Table[y] += obj;   
+                        }
+                        else
+                        {
                         Table[y] += tableConstr[3];
+                        }
                     }
                 } 
             }
@@ -93,7 +107,13 @@ public class PhysicsEngine_Mini {
         {
             System.out.println(Table[tabnum]);
         }
-   
+        if(CordinatesY > ylength || CordinatesX > xlength)
+        {
+            System.err.println("Object Out!");
+            break;
+            
+        }
+        }
     }
     
 }
