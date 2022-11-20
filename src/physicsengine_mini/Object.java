@@ -15,8 +15,8 @@ public class Object {
     {
         this.velocityX = velocityX;
         this.velocityY = velocityY;
-        this.velocityX = velocityX;
-        this.velocityY = veloxityY;
+        this.cordinatesX = cordinatesX;
+        this.cordinatesY = cordinatesY;
     }
     void setLoc()
     {

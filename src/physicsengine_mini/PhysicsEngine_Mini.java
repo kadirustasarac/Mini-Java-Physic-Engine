@@ -41,7 +41,7 @@ public class PhysicsEngine_Mini {
     }
     public static void graphMaker(int xlength,int ylength,Object object)
     {
-       
+        
         String Table[] = new String[ylength*2+1];
         //                         0       1      2          3         4
         String[] tableConstr = {"-----",  "|"  ,  ""  ,  "     "  ,   " "  };
@@ -49,7 +49,7 @@ public class PhysicsEngine_Mini {
         while(true){
             {
             try{
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(1);
             }
             catch(InterruptedException e)
             {
@@ -91,10 +91,11 @@ public class PhysicsEngine_Mini {
                     }
                     else
                     {
-                        if(((CordinatesY*2-1) == y) && ((CordinatesX*2-1) == x))
+                        if((((CordinatesY*2+1) == y) && ((CordinatesX*2+1) == x)) || (((CordinatesY*2-1) == y) && ((CordinatesX*2-1) == x)) || (((CordinatesY*2-1) == y) && ((CordinatesX*2+1) == x)) || (((CordinatesY*2+1) == y) && ((CordinatesX*2-1) == x)))
                         {
                          Table[y] += obj;   
                         }
+                        
                         else
                         {
                         Table[y] += tableConstr[3];
