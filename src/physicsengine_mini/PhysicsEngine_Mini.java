@@ -44,8 +44,8 @@ public class PhysicsEngine_Mini {
         
         String Table[] = new String[ylength*2+1];
         //                         0       1      2          3         4
-        String[] tableConstr = {"-----",  "|"  ,  ""  ,  "     "  ,   " "  };
-        String obj = "  O  ";
+        String[] tableConstr = {"     ",  " "  ,  ""  ,  "     "  ,   " "  };
+        String obj = "  1  ";
         while(true){
             {
             try{
